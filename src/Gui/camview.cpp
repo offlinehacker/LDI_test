@@ -173,7 +173,7 @@ void CCamView::DrawCam( IplImage* pImg )
 
 		Refresh( FALSE );
 
-		Update( );
+		//Update( );
 
 		cvReleaseImage( &pDstImg );
 

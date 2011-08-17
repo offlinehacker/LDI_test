@@ -24,6 +24,9 @@ bool OutputStatistics::DisplayOutputData()
 	Grid->ClearGrid();
 
 	T_MEAS_RESULTS_REC *ContourResult;
+	if(!cContoursProcessor->GetResults())
+		return false;
+
 	for( int x=0; x<cContoursProcessor->GetResults()->total; x++ )
 	{
 		ContourResult = (T_MEAS_RESULTS_REC *) cvGetSeqElem(cContoursProcessor->GetStatistics(),x);

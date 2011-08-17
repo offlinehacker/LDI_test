@@ -1,0 +1,15 @@
+========
+LDI_test
+========
+
+LDI_test is gui framework for OpenCv.
+The idea is that we have processing blocks that are connected betwene 
+each other and that every processing block has its own gui control. Gui 
+controls can be easily made using tools like wxDesigner which generates 
+gui code and processing code can be easily imported into these blocks by 
+implementing simple processing class. You can see example in 
+Options1Derived.cpp file.
+
+TODO:
+- Synch for video output and data output.
+- Documentation.

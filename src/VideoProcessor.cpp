@@ -3,7 +3,24 @@
 VideoProcessor::VideoProcessor( char* lname )
 {
 	strncpy(name, lname, 19 );
+}
 
+IplImage* VideoProcessor::ProcessVideoFrame( IplImage *InputFrame )
+{
+	//First receive new options then process.
+	cQueue.ReceiveTimeout(0, &WorkingOptions);
+	return Process(InputFrame);
+
+	//Remove options, sice they are only temporary.
+	delete WorkingOptions;
+}
+
+bool VideoProcessor::TransferOptions()
+{
+	//tMessage tmp = tMessage(GuiOptions);
+	if(!cQueue.Post(GuiOptions))
+		return true;
+	return false;
 }
 
 VideoProcessorManager::VideoProcessorManager()
@@ -28,11 +45,6 @@ bool VideoProcessorManager::AddVideoProcessor( VideoProcessor *lVideoProcessor )
 	cVideoProcessors[VideoProcessorCount]= lVideoProcessor;
 	VideoProcessorCount++;
 
-	return true;
-}
-
-bool VideoProcessor::TransferOptions()
-{
 	return true;
 }
 

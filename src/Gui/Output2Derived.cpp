@@ -28,8 +28,10 @@ OutputContourObjects::OutputContourObjects( wxGrid *lGrid, ContoursProcessor *lC
 
 bool OutputContourObjects::DisplayOutputData()
 {
-	CvSeq *tContourObjects= cContoursProcessor->GetContourObjects();
+	if(!cContoursProcessor->GetResults())
+		return false;
 
+	CvSeq *tContourObjects= cContoursProcessor->GetContourObjects();
 	Grid->ClearGrid();
 
 	T_MEAS_RESULTS_REC *ContourResult;

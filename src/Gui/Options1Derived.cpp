@@ -27,6 +27,7 @@ Options1( parent )
 void Options1Derived::OnTreshold( wxScrollEvent& event )
 {
 	cContoursProcessor->SetTreshold( m_Treshold->GetValue() );
+	cContoursProcessor->TransferOptions();
 }
 
 void Options1Derived::OnResetStatistics( wxCommandEvent& event )
@@ -36,6 +37,8 @@ void Options1Derived::OnResetStatistics( wxCommandEvent& event )
 
 ContoursProcessor::ContoursProcessor( char* lname ): VideoProcessor( lname )
 {
+	GuiOptions= new ContoursOptions();
+	WorkingOptions= new ContoursOptions();
 	InitProcessing();
 }
 
@@ -60,7 +63,7 @@ bool ContoursProcessor::InitProcessing()
 
 void ContoursProcessor::CloseProcessing(void)
 {
-	if(Tmp_img);
+	if(Tmp_img)
 		cvReleaseImage(&Tmp_img); 
 	if(img)
 		cvReleaseImage(&img);
@@ -72,20 +75,18 @@ void ContoursProcessor::CloseProcessing(void)
 
 void ContoursProcessor::SetTreshold( int Value)
 {
+	ContoursOptions *lContoursOptions= (ContoursOptions*)GuiOptions;
+
 	if(Value > 255 )
 		return;
 
-	GuiVersion.Treshold= Value;
+	lContoursOptions->Treshold= Value;
 }
 
-bool ContoursProcessor::TransferOptions()
+IplImage* ContoursProcessor::Process( IplImage *InputFrame )
 {
-	memcpy( &WorkingVersion, &GuiVersion, sizeof(ContoursOptions) );
-	return true;
-}
+	ContoursOptions *lContoursOptions= (ContoursOptions*)WorkingOptions;
 
-IplImage* ContoursProcessor::ProcessVideoFrame( IplImage *InputFrame )
-{
 	MeasurementImageCount++;
 	if(pimg)
 		cvReleaseImage(&pimg);
@@ -93,7 +94,7 @@ IplImage* ContoursProcessor::ProcessVideoFrame( IplImage *InputFrame )
 
 	img= RgbToBW( InputFrame );
 
-	cvThreshold(img, pimg, WorkingVersion.Treshold, 255, CV_THRESH_BINARY /*CV_THRESH_BINARY*/ );
+	cvThreshold(img, pimg, lContoursOptions->Treshold, 255, CV_THRESH_BINARY /*CV_THRESH_BINARY*/ );
 
 	if (Tmp_img)
 		cvReleaseImage(&Tmp_img);
@@ -165,7 +166,6 @@ bool ContoursProcessor::FindContours()
 
 bool ContoursProcessor::CalcResult(CvSeq *Results)
 {
-  int y=0;
   int i;
   T_MEAS_RESULTS_REC *ContourResult;
   T_MEAS_RESULTS_REC ContourStatResult;

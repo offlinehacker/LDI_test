@@ -32,7 +32,7 @@ void VideoIOConfiguration::DisplayFrame( IplImage *frame, char* name )
 		return;
 	for( int x=0; x<VideoOutputsCount; x++ )
 	{
-		//if(!strcmp(name, cVideoIOOutputRelations[x].name) )
+		if(!strcmp(name, cVideoIOOutputRelations[x].name) )
 			cVideoIOOutputRelations[x].VideoOutput->DrawCam( frame );
 	}
 }

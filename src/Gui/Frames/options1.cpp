@@ -18,7 +18,7 @@ Options1::Options1( wxWindow* parent, wxWindowID id, const wxPoint& pos, const w
 	m_staticText1->Wrap( -1 );
 	ContoursOptionsSizer->Add( m_staticText1, 0, wxALL, 5 );
 	
-	m_Treshold = new wxSlider( this, wxID_ANY, 50, 0, 255, wxDefaultPosition, wxDefaultSize, wxSL_HORIZONTAL );
+	m_Treshold = new wxSlider( this, wxID_ANY, 50, 0, 255, wxDefaultPosition, wxSize(100,100), wxSL_HORIZONTAL );
 	ContoursOptionsSizer->Add( m_Treshold, 0, wxALL, 5 );
 	
 	m_ResetStatistics = new wxButton( this, wxID_ANY, wxT("Reset statistics"), wxDefaultPosition, wxDefaultSize, 0 );

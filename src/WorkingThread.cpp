@@ -32,12 +32,11 @@ void *WorkingThread::Entry()
 				continue;
 			if( VideoIsRecording )
 				cVideoRecorder->RecordFrame( NextFrame );
-			cVideoIOConfiguration->DisplayFrame( NextFrame, "In" );
+			//cVideoIOConfiguration->DisplayFrame( NextFrame, "In" );
 			if(NextFrame)
 			{
 				if( VideoIsProcessing )
 				{
-					cVideoProcessorManager->TransferOptions();
 					LastFrame= NextFrame;
 					for( int x=0; x<cVideoProcessorManager->GetVideoProcessorCount(); x++ )
 					{
