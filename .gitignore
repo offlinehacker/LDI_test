@@ -3,3 +3,4 @@ debug/*
 runtime/*
 Release/*
 Lib/*
+LDI_test/*
