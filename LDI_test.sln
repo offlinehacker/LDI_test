@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LDI_test", "LDI_test\LDI_test.vcproj", "{E0C2C445-9FB6-46BE-9E76-4AC59EEE08CA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+		RunTime|Win32 = RunTime|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E0C2C445-9FB6-46BE-9E76-4AC59EEE08CA}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E0C2C445-9FB6-46BE-9E76-4AC59EEE08CA}.Debug|Win32.Build.0 = Debug|Win32
+		{E0C2C445-9FB6-46BE-9E76-4AC59EEE08CA}.Release|Win32.ActiveCfg = Release|Win32
+		{E0C2C445-9FB6-46BE-9E76-4AC59EEE08CA}.Release|Win32.Build.0 = Release|Win32
+		{E0C2C445-9FB6-46BE-9E76-4AC59EEE08CA}.RunTime|Win32.ActiveCfg = Debug|Win32
+		{E0C2C445-9FB6-46BE-9E76-4AC59EEE08CA}.RunTime|Win32.Build.0 = Debug|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

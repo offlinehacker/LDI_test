@@ -1,0 +1,1 @@
+#define SETUP_FILE "ids_setup.ini"
